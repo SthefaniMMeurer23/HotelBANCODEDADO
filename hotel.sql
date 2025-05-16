@@ -1,0 +1,242 @@
+-- phpMyAdmin SQL Dump
+-- version 5.2.1
+-- https://www.phpmyadmin.net/
+--
+-- Host: localhost
+-- Tempo de geração: 16/05/2025 às 01:06
+-- Versão do servidor: 10.4.32-MariaDB
+-- Versão do PHP: 8.2.12
+
+SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
+START TRANSACTION;
+SET time_zone = "+00:00";
+
+
+/*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
+/*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
+/*!40101 SET @OLD_COLLATION_CONNECTION=@@COLLATION_CONNECTION */;
+/*!40101 SET NAMES utf8mb4 */;
+
+--
+-- Banco de dados: `hotel`
+--
+
+-- --------------------------------------------------------
+
+--
+-- Estrutura para tabela `FUNCIONARIO`
+--
+
+CREATE TABLE `FUNCIONARIO` (
+  `CPF` bigint(11) NOT NULL,
+  `NOME` varchar(45) NOT NULL,
+  `TURNO` tinyint(1) DEFAULT NULL,
+  `TELEFONE` bigint(15) DEFAULT NULL,
+  `DEPENDENTES` int(11) DEFAULT NULL,
+  `ENDERECO` text DEFAULT NULL,
+  `EMAIL` varchar(50) NOT NULL,
+  `DATA_NASCIMENTO` date DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Despejando dados para a tabela `FUNCIONARIO`
+--
+
+INSERT INTO `FUNCIONARIO` (`CPF`, `NOME`, `TURNO`, `TELEFONE`, `DEPENDENTES`, `ENDERECO`, `EMAIL`, `DATA_NASCIMENTO`) VALUES
+(1234567890, 'Mariana F Santos', NULL, 49985274532, 2, 'RUA DAS LARANJEIRAS 45 BAIRRO VILA NOVA', 'MARIANA_F@HOTMAIL.COM', '1992-06-25'),
+(1453332698, 'JANETE DA SILVA', NULL, 49958634569, 2, 'RUA DDA SILVA 255 BAIRRO SAO JOSE', 'JANETE09@GMAIL.COM', '1995-04-02'),
+(1473920568, 'Tiago V Pereira', NULL, 49976348920, 3, 'RUA DO COMÉRCIO 789 BAIRRO NOVA ERA', 'TIAGO.PEREIRA@GMAIL.COM', '1985-05-18'),
+(1547892356, 'Andreia B Rocha', NULL, 49968534982, 2, 'RUA SÃO PEDRO 204 BAIRRO PONTE ALTA', 'ANDREIA.ROCHA@OUTLOOK.COM', '1990-10-10'),
+(1563874521, 'Carlos A Oliveira', NULL, 49967452301, 1, 'AVENIDA BRASIL 1300 BAIRRO CENTRO', 'CARLOS12@GMAIL.COM', '1988-09-15'),
+(1653274901, 'Luciana D Almeida', NULL, 49972163984, 3, 'RUA DAS ROSAS 312 BAIRRO FLORIANO', 'LUCIANA_DA@YAHOO.COM', '1996-03-08'),
+(1748392640, 'Roberta C Lima', NULL, 49981235467, 4, 'AVENIDA MARIANA 101 BAIRRO VILA SÃO JOSÉ', 'ROBERTA.LIMA@HOTMAIL.COM', '1987-11-12'),
+(1892374651, 'Felipe M Silva', NULL, 49967485012, 4, 'RUA JOSÉ DO PATROCÍNIO 78 BAIRRO JARDIM', 'FELIPEM@GMAIL.COM', '1990-01-19'),
+(1984532087, 'Paulo A Costa', NULL, 49997461253, 2, 'RUA PARQUE 55 BAIRRO ALTO ALEGRE', 'PAULOACOSTA@GMAIL.COM', '1993-02-20');
+
+-- --------------------------------------------------------
+
+--
+-- Estrutura para tabela `HOSPEDE`
+--
+
+CREATE TABLE `HOSPEDE` (
+  `CPF` bigint(11) NOT NULL,
+  `NOME` varchar(45) NOT NULL,
+  `ENDERECO` varchar(45) DEFAULT NULL,
+  `TELEFONE` bigint(15) DEFAULT NULL,
+  `EMAIL` varchar(50) DEFAULT NULL,
+  `DATA_NASCIMENTO` date DEFAULT NULL,
+  `RG` bigint(11) NOT NULL,
+  `GEMERO` text DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Despejando dados para a tabela `HOSPEDE`
+--
+
+INSERT INTO `HOSPEDE` (`CPF`, `NOME`, `ENDERECO`, `TELEFONE`, `EMAIL`, `DATA_NASCIMENTO`, `RG`, `GEMERO`) VALUES
+(6478521369, 'André F Oliveira', 'Avenida Central 88, Bela Vista', 72369854127, 'andre.oliveira@outlook.com', '1990-08-05', 412365987, 'masculino'),
+(6789412358, 'Tiago D Santos', 'Rua XV de Novembro 303, Industrial', 19675483247, 'tiago.santos@gmail.com', '1989-06-30', 478596123, 'masculino'),
+(6987451236, 'Lucas A Pereira', 'Avenida Brasil 420,  Centro', 41256398745, 'lucas.pereira92@gmail.com', '1992-03-15', 387451236, 'masculino'),
+(7365489123, 'Carlos M Lima', 'Travessa João XXIII 55,  Alto da Glória', 31875496201, 'carlosmlima@yahoo.com', '1995-07-09', 325698741, 'masculino'),
+(7425428963, 'Sthefani M Meurer', 'Rua Ernesto SCHOL  149  sao sebastiao', 49991254785, 'thefa05mm@gmail.com', '2002-05-01', 125899657, 'femenino'),
+(7985463217, 'Marina L Rocha', 'Rua Independência 100,  São Jorge', 34125896730, 'marina.rocha@hotmail.com', '1998-01-12', 695874123, 'feminino'),
+(8325419678, 'Beatriz T Almeida', 'Rua Santa Clara 15, Nova Era', 89741256308, 'beatriz.almeida@gmail.com', '2001-10-19', 569874231, 'feminino'),
+(8512369874, 'Juliana C Souza', 'Rua das Rosas 102, Jardim Florido', 85201478963, 'juliana.csouza@hotmail.com', '1987-11-02', 478965214, 'feminino'),
+(8896541230, 'Patrícia R Fernandes', 'Rua das Laranjeiras 78,  Esperança', 57984321560, 'patricia.rf@gmail.com', '2000-04-22', 214785963, 'feminino');
+
+-- --------------------------------------------------------
+
+--
+-- Estrutura para tabela `PROMOCAO`
+--
+
+CREATE TABLE `PROMOCAO` (
+  `ID` int(11) NOT NULL,
+  `DATA_PROMOCAO` date DEFAULT NULL,
+  `PORCENTAGEM_DESCONTO` float DEFAULT NULL,
+  `NOME` varchar(45) DEFAULT NULL,
+  `VALOR` float DEFAULT NULL,
+  `PERIODO_ANO` char(10) DEFAULT NULL,
+  `TRANSPORTE` varchar(45) DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Despejando dados para a tabela `PROMOCAO`
+--
+
+INSERT INTO `PROMOCAO` (`ID`, `DATA_PROMOCAO`, `PORCENTAGEM_DESCONTO`, `NOME`, `VALOR`, `PERIODO_ANO`, `TRANSPORTE`) VALUES
+(1, '2025-03-20', 10, 'PROMOCAO DE OUTONO', 50, 'OUTONO', 'NAO ESTA INCLUSO'),
+(2, '2025-06-20', 5, 'PROMOCAO DE INVERNO', 20, 'INVERNO', 'NAO ESTA INCLUSO'),
+(3, '2025-09-22', 20, 'PROMOCAO DE PRIMAVERA', 60, 'PRIMAVERA', 'NAO ESTA INCLUSO'),
+(4, '2025-12-22', 30, 'PROMOCAO DE INVERNO', 80, 'VERAO', 'NAO ESTA INCLUSO'),
+(5, '2025-09-01', 15, 'PROMOCAO DE DIA DAS CRIANCAS', 55, 'SETEMBRO', 'TRENZINHO'),
+(6, '2025-05-01', 20, 'PROMOCAO DE DIA DAS MAES ', 50, 'MAIO', 'KAIGANGUE'),
+(7, '2025-06-12', 15, 'PROMOCAO DE DIA DOS NAMORADOS', 80, 'JUNHO', 'VAN'),
+(8, '2025-08-01', 20, 'PROMOCAO DE DIA DOS PAIS', 50, 'OUTUBRO', 'JAGUNCO');
+
+-- --------------------------------------------------------
+
+--
+-- Estrutura para tabela `QUARTO`
+--
+
+CREATE TABLE `QUARTO` (
+  `ID` int(11) NOT NULL,
+  `NUMERO` int(11) DEFAULT NULL,
+  `NUMERO_CAMAS` int(11) DEFAULT NULL,
+  `CORREDOR` int(11) DEFAULT NULL,
+  `MODELO` varchar(45) DEFAULT NULL,
+  `STATUS_OCUPACAO` varchar(30) DEFAULT NULL,
+  `BANHEIRA_HIDRO` tinyint(1) DEFAULT NULL,
+  `NUMERO_PESSOAS` int(11) DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Despejando dados para a tabela `QUARTO`
+--
+
+INSERT INTO `QUARTO` (`ID`, `NUMERO`, `NUMERO_CAMAS`, `CORREDOR`, `MODELO`, `STATUS_OCUPACAO`, `BANHEIRA_HIDRO`, `NUMERO_PESSOAS`) VALUES
+(1, 1, 3, 2, 'QUARTO DE FAMILIA', 'OCUPADO', 1, 5),
+(2, 2, 2, 2, 'QUARTO DE LUXO', 'DISPONIVEL', 1, 3),
+(3, 4, 3, 2, 'QUARTO SOLTEIRO', 'DISPONIVEL', 0, 5),
+(4, 5, 3, 2, 'QUARTO DE FAMILIA', 'OCUPADO', 0, 5),
+(5, 7, 1, 2, 'QUARTO SIMPLES', 'DISPONIVEL', 0, 2),
+(6, 9, 1, 2, 'QUARTO SIMPLES', 'OCUPADO', 0, 2),
+(7, 8, 4, 2, 'QUARTO AMIGOS ', 'DISPONIVEL', 1, 6),
+(8, 10, 1, 2, 'SUITE MASTER', 'RESERVADO', 1, 2);
+
+-- --------------------------------------------------------
+
+--
+-- Estrutura para tabela `RESERVA`
+--
+
+CREATE TABLE `RESERVA` (
+  `DATA_RESERVA` date NOT NULL,
+  `HORARIO_RESERVA` time DEFAULT NULL,
+  `FORMA_PAGAMENTO` varchar(45) NOT NULL,
+  `VALOR` float DEFAULT NULL,
+  `STATUS_RESERVA` varchar(20) DEFAULT NULL,
+  `REFEICAO_INCLUSA` varchar(20) DEFAULT NULL,
+  `ADIANTAMENTO` float DEFAULT NULL,
+  `ID_RESERVA` int(11) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Despejando dados para a tabela `RESERVA`
+--
+
+INSERT INTO `RESERVA` (`DATA_RESERVA`, `HORARIO_RESERVA`, `FORMA_PAGAMENTO`, `VALOR`, `STATUS_RESERVA`, `REFEICAO_INCLUSA`, `ADIANTAMENTO`, `ID_RESERVA`) VALUES
+('2025-05-02', '14:50:00', 'DINHEIRO', 150, 'ATIVO', 'CAFE DA MANHA ', 50, 1),
+('2025-01-02', '10:50:00', 'CHEQUE', 520, 'ATIVO', ' ALMOCO E JANTA ', 250, 2),
+('2023-12-15', '06:50:00', 'CARTAO', 350, 'CONCLUIDO', 'CAFE E ALMOCO', 125, 3),
+('2025-03-09', '15:50:00', 'DINHEIRO', 200, 'ATIVO', 'CAFE DA MANHA', 60, 4),
+('2024-10-05', '09:40:00', 'PIX', 240, 'ATIVO', 'CAFE  E JANTA ', 100, 5),
+('2025-12-15', '06:50:00', 'CARTAO', 350, 'ATIVO', 'CAFE E ALMOCO', 125, 6),
+('2025-10-05', '09:40:00', 'PIX', 240, 'ATIVO', 'CAFE  E JANTA ', 100, 7),
+('2025-04-02', '11:50:00', 'DINHEIRO', 150, 'ATIVO', 'CAFE DA MANHA ', 50, 8);
+
+--
+-- Índices para tabelas despejadas
+--
+
+--
+-- Índices de tabela `FUNCIONARIO`
+--
+ALTER TABLE `FUNCIONARIO`
+  ADD PRIMARY KEY (`CPF`),
+  ADD UNIQUE KEY `CPF` (`CPF`),
+  ADD UNIQUE KEY `EMAIL` (`EMAIL`);
+
+--
+-- Índices de tabela `HOSPEDE`
+--
+ALTER TABLE `HOSPEDE`
+  ADD PRIMARY KEY (`CPF`),
+  ADD UNIQUE KEY `RG` (`RG`);
+
+--
+-- Índices de tabela `PROMOCAO`
+--
+ALTER TABLE `PROMOCAO`
+  ADD PRIMARY KEY (`ID`);
+
+--
+-- Índices de tabela `QUARTO`
+--
+ALTER TABLE `QUARTO`
+  ADD PRIMARY KEY (`ID`);
+
+--
+-- Índices de tabela `RESERVA`
+--
+ALTER TABLE `RESERVA`
+  ADD PRIMARY KEY (`ID_RESERVA`);
+
+--
+-- AUTO_INCREMENT para tabelas despejadas
+--
+
+--
+-- AUTO_INCREMENT de tabela `PROMOCAO`
+--
+ALTER TABLE `PROMOCAO`
+  MODIFY `ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
+
+--
+-- AUTO_INCREMENT de tabela `QUARTO`
+--
+ALTER TABLE `QUARTO`
+  MODIFY `ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
+
+--
+-- AUTO_INCREMENT de tabela `RESERVA`
+--
+ALTER TABLE `RESERVA`
+  MODIFY `ID_RESERVA` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
+COMMIT;
+
+/*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
+/*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
+/*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
